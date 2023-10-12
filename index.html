@@ -5,21 +5,24 @@
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.2.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.20.8"></script>
   <link rel="stylesheet" type="text/css" href="css/style.css">
+
+
 </head>
 <body>
-
   <div id="vis"></div>
-  <script>
 
-    const spec = {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-      "data": {
-        "url": "https://raw.githubusercontent.com/tyoppar01/hw_w10/master/data/gdp_s1.csv",
-        "format": {
-          "type": "csv"
-        }
-      },
-      "params": [{
+  <script>
+    const spec = 
+
+    {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+        "data": {
+          "url": "https://raw.githubusercontent.com/tyoppar01/hw_w10/master/data/gdp_s1.csv",
+          "format": {
+            "type": "csv"
+          }
+        },
+        "params": [{
           "name": "Year_selection",
           "value": 2022,
           "bind": {
@@ -30,60 +33,55 @@
             "name": "Year: "
           }
       }],
-    "vconcat":[{
-    // 1st idiom (mapping)
-    "title": "World GDP",
-    "width": 800,
-    "height": 300,
-    "projection": {"type": "equalEarth"},
-    
-    "layer": [
-
-      // Ocrean code
-      {
-        "data": {
-            "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/7_others/oceans.topojson",
-            "format": {"type": "topojson", "feature": "oceans"}
-        },
-        "mark": {"type": "geoshape", "fill": "skyblue"}
-      },
-
-      // Graticule code
-      {
-        "data": {
-            "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/WorldMapWithGraticules.topojson",
-            "format": {"type": "topojson", "feature": "ne_110m_graticules_30"}
-        },
-        "mark": {"type": "geoshape", "fill": null, "stroke": "lightgray"}
-      },
-      {
-        "transform": [
-        {
-        "lookup": "country_name",
-        "from": {
-            "data": {
-            "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/3_choropleth_map/js/ne_110m_admin_0_countries.topojson",
-            "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+      "vconcat":[{
+  
+          "title": "World GDP",
+      "width": 800,
+      "height": 300,
+      "projection": {"type": "equalEarth"},
+      
+      "layer": [
+  
+          {
+              "data": {
+                  "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/7_others/oceans.topojson",
+                  "format": {"type": "topojson", "feature": "oceans"}
+              },
+              "mark": {"type": "geoshape", "fill": "skyblue"}
             },
-            "key": "properties.NAME"
-        },
-        "as": "geo"
-        },
-        //{"filter": {"field": "Year", "equal": "param"}},
-        {"filter": "datum.year == Year_selection"}
-        ],
-        "mark": {
-          "type": "geoshape",
-          "stroke": "white"
-      },
-        "encoding": {
+            {
+              "data": {
+                  "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/WorldMapWithGraticules.topojson",
+                  "format": {"type": "topojson", "feature": "ne_110m_graticules_30"}
+              },
+              "mark": {"type": "geoshape", "fill": null, "stroke": "lightgray"}
+            },
+            {
+              "transform": [
+                  {
+                  "lookup": "country_name",
+                  "from": {
+                      "data": {
+                      "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/3_choropleth_map/js/ne_110m_admin_0_countries.topojson",
+                      "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+                      },
+                      "key": "properties.NAME"
+                  },
+                  "as": "geo"
+                  },
+                  {"filter": "datum.year == Year_selection"}
+          ],
+          "mark": {
+            "type": "geoshape",
+            "stroke": "white"
+        },"encoding": {
           "shape": {"field": "geo", "type": "geojson"},
           "color": {
             "field": "value", "type": "quantitative", "title":"GDP value",
             "scale": {
               "type": "quantitative",
               "domain": [0, 1000000000, 10000000000, 100000000000, 1000000000000, 10000000000000, 50000000000000],
-              "range": ["#D5F5E3", "#66AA66", "#66B2B2", "#45A194", "#33997E", "#008000", "#004C00"],
+              "range": ["#D5F5E3", "#66AA66", "#66B2B2", "#45A194", "#33997E", "#008000", "#004C00"]
             }
           },
           "tooltip": [
@@ -97,48 +95,43 @@
         }
       }]
       },{
-      // 2nd idiom (stacked line chart)
-      //"title": "GDP changes of USA and China for past 20 years",
-      "width": 800,
-      "height": 200,
-      "transform": [
-        {"filter": "datum.year >= 2000 && datum.year <= 2022"},
-        {"filter": "datum.country_name === 'China' || datum.country_name === 'United States of America'"}, 
-      ],
-      "mark": "line",
-      "encoding": {
-        "x": {
-          "field": "year", 
-          "type": "quantitative", 
-          "title": "",
-          "axis": { "format": "d" }
-        },
-        "y": {
-          "field": "value",
-          "type": "quantitative",
-          "title": "GDP Value",
-          "scale": {"domain": [0, 30000000000000]},
-          "axis": {
-            "format": ".0e"
-          }
-        },
-        "color": {
-          "field": "country_name", 
-          "type": "nominal", 
-          "title": "Country"} 
-      },
-      "config": {
-        "view": {"stroke": "transparent"}
-      }
-      }]
+          "width": 800,
+        "height": 200,
+        "transform": [
+          {"filter": "datum.year >= 2000 && datum.year <= 2022"},
+          {"filter": "datum.country_name === 'China' || datum.country_name === 'United States of America'"}
+        ],
+        "mark": "line",
+        "encoding": {
+          "x": {
+            "field": "year", 
+            "type": "quantitative", 
+            "title": "",
+            "axis": { "format": "d" }
+          },
+          "y": {
+            "field": "value",
+            "type": "quantitative",
+            "title": "GDP Value",
+            "scale": {"domain": [0, 30000000000000]},
+            "axis": {
+              "format": ".0e"
+            }
+          },
+          "color": {
+            "field": "country_name", 
+            "type": "nominal", 
+            "title": "Country"} 
+        }
+        }]
+    
   }
 
-  vegaEmbed("#vis", spec, {mode: "vega-lite"}).then((result) => {
-    // Handle the result here if needed.
-  }).catch((error) => {
-    console.error(error);
-  });
-  
+    vegaEmbed("#vis", spec, {mode: "vega-lite"}).then((result) => {
+      // Handle the result here if needed.
+    }).catch((error) => {
+      console.error(error);
+    });
   </script>
 </body>
 </html>
