@@ -1,0 +1,52 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/tyoppar01/hw_w10/master/data/gdp_s1.csv",
+    "format": {
+      "type": "csv"
+    }
+  },
+  "width": "container",
+  "transform": [
+    {
+      "filter": "datum.year >= 2012 && datum.year <= 2022"
+    },
+    {
+      "filter": "datum.country_name === 'China' || datum.country_name === 'United States of America' || datum.country_name === 'Japan' || datum.country_name === 'Russia' || datum.country_name === 'Australia'"
+    }
+  ],
+  "mark": "line",
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "quantitative",
+      "title": "",
+      "axis": {
+        "format": "d"
+      }
+    },
+    "y": {
+      "field": "value",
+      "type": "quantitative",
+      "title": "GDP Value",
+      "scale": {
+        "domain": [
+          0,
+          30000000000000
+        ]
+      },
+      "axis": {
+        "format": ".0e"
+      }
+    },
+    "color": {
+      "field": "country_name",
+      "type": "nominal",
+      "title": "Country",
+      "scale": {
+        "range": ["#FF5733", "#33FF57", "#3366FF", "#FFFF33", "#FF33FF"]
+      }
+    }
+  },
+  "config": {}
+}

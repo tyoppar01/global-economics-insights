@@ -6,36 +6,35 @@
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.2.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.20.8"></script>
   <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
 
   <div class="title">
-    <h1>World GDP Trend</h1>
+    <h1>Global Economic Insight: GDP</h1>
   </div>
 
   <div class="description">
     <p>
-      GDP represents a nation's economic wealth, reflecting the overall
-      performance and growth trajectory of economy. The trends provides
-      valuable information on changes of GDP over time.
+      This report provides an analysis of the global Gross Domestic Product (GDP), 
+      which serves as a barometer of a nation's economic prosperity, offering a holistic 
+      view of its economic performance and growth direction. In professional perspective,
+      it discovers key trends, challenges, and opportunities in the realm of GDP, it
+      offers deeper insights into its influence on every nation.
     </p>
   </div>
-</head>
 
-<body>
-  <div id="vis"></div>
+  <div class="divider"></div>
+
+  <div id="vis">
 
   <script>    
     var spec = "js/gdp_map_1.json";
-    var spec2 = "js/gdp_map_1.json";
-
-    var spec3 = {
-      "vconcat": [
-        {"data": {"url": spec}}
-      ]
-    };
-
     vegaEmbed("#vis", spec, { mode: "vega-lite" }).then((result) => {
     }).catch((error) => { console.error(error); });
   </script>
 
+
+</div>
 </body>
 </html>
