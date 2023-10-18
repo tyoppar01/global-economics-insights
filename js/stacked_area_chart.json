@@ -1,29 +1,63 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": "container", "height": 300,
-    "data": {"url": "https://raw.githubusercontent.com/tyoppar01/fit3179_assignment_2/master/data/gdp_per_capita.csv"},
+    "width": "container",
+    "height": 300,
+    "background": "#d3d3d3",
+    "data": {
+        "url": "https://raw.githubusercontent.com/tyoppar01/fit3179_assignment_2/master/data/gdp_growth_capita_1.csv"
+    },
     "mark": "area",
     "encoding": {
-      "x": {
-        "timeUnit": "year", "field": "date",
-        "axis": {"format": "%Y"},
-        "title": "Year"
-      },
-      "y": {
-        "field": "value",
-        "type": "quantitative",
-        "title": "GDP Value",
-        "scale": {
-          "domain": [
-            0,
-            500
-          ]
-        }
-      },
-      "color": {
-        "field": "series",
-        "scale": {"scheme": "category20b"}
-      }
+        "x": {
+            "timeUnit": "year",
+            "field": "year",
+            "axis": {
+                "format": "%Y"
+            },
+            "title": "Year"
+        },
+        "y": {
+            "field": "gdp_per_capita_growth",
+            "type": "quantitative",
+            "title": "GDP per capita",
+            "scale": {
+                "domain": [
+                    0,
+                    100000
+                ]
+            }
+        },
+        "color": {
+            "field": "country_name",
+            "title": "Country",
+            "scale": [
+                {
+                    "scheme": "category20b"
+                },
+                {
+                    "range": [
+                        "#0000A0",
+                        "#D5F5E3"
+                    ]
+                }
+            ]
+        },
+        "tooltip": [
+            {
+                "field": "country_name",
+                "type": "nominal",
+                "title": "Country Name"
+            },
+            {
+                "field": "year",
+                "type": "temporal"
+            },
+            {
+                "field": "gdp_per_capita_growth",
+                "type": "quantitative",
+                "title": "GDP per capita",
+                "format": ".2f"
+            }
+        ]
     }
-  }
-  
+}
