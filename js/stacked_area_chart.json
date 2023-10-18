@@ -30,17 +30,9 @@
         "color": {
             "field": "country_name",
             "title": "Country",
-            "scale": [
-                {
-                    "scheme": "category20b"
-                },
-                {
-                    "range": [
-                        "#0000A0",
-                        "#D5F5E3"
-                    ]
-                }
-            ]
+            "scale": {
+                "scheme": "category20b"
+            }
         },
         "tooltip": [
             {
