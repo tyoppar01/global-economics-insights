@@ -6,3 +6,37 @@ image retrieved from link
 
 https://www.edology.com/blog/accounting-finance/how-does-global-economy-work/
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+draft note - combine first and second graphs into 3 column view
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-2-3">
+        <div id="vis2" class="vis-container"></div>
+      </div>
+      <div class="pure-u-1-3">
+        <div class="description description-right">
+          <h2>First and Second Columns Combined</h2>
+          <p>The first and second columns are combined. Lorem ipsum dolor sit amet,
+            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa sapien
+            faucibus et molestie ac feugiat sed. Egestas purus viverra accumsan in nisl.</p>
+        </div>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+

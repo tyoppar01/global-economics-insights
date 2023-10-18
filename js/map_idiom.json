@@ -19,7 +19,7 @@
             }
         }
     ],
-    "title": "World GDP",
+    "background": "#d3d3d3",
     "width": "container",
     "height": 300,
     "projection": {
@@ -116,8 +116,9 @@
                         "type": "quantitative",
                         "domain": [
                             0,
-                            1000000000,
                             10000000000,
+                            15000000000,
+                            30000000000,
                             100000000000,
                             1000000000000,
                             10000000000000,

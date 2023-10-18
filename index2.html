@@ -28,38 +28,34 @@
 
   <div class="page">
 
-    <!-- pure grid group -->
+    <!-- Title & Description -->
     <div class="pure-g">
       <div class="pure-u-1-1">
-        <div class="title">Global Economic Insight: GDP</div>
+        <div class="title">Global Economic Insight (GDP)</div>
         <div class="description">
-          <h2>
-        <p>
+        <p><h2>
             This report provides an analysis of the global Gross Domestic Product (GDP), 
             which serves as a barometer of a nation's economic prosperity, offering a holistic 
             view of its economic performance and growth direction. In professional perspective,
             it discovers key trends, challenges, and opportunities in the realm of GDP, it
             offers deeper insights into its influence on every nation.
-        </p>
-      </h2>
+          </h2></p>
         </div>
       </div>
     </div>
-    <!-- end pure grid group -->
-
     <div class="spacing"></div>
     
-    <!-- pure grid group -->
+    <!-- First Graph: Map Idiom -->
     <div class="pure-g">
       <div class="pure-u-1-2">
         <div class="description description-left">
-          <h2>Top 5 Countries leading in GDP </h2>
+          <h1>Top 5 Countries leading in GDP </h1>
           <div class="para">
           <p>
-            The visualisation shows that USA has led in GDP for 10 years.
+            The visualisation shows that <b>USA</b> has <b> led in GDP for 10 years.</b> 
             Its GDP is marked by high levels of economic sectors such as
-            technology, finance, manufacturing and services. 
-            It has emerged as a global economic powerhouse with remarkable growth 
+            technology, finance, manufacturing and services. Other than that, <b>China</b>
+            also has emerged as a <b>global economic powerhouse</b> with remarkable growth 
             in recent decades. It has transformed and played an important role
             in global manufacturing and trading. 
           </p>
@@ -70,11 +66,50 @@
         <div id="vis1" class="vis-container"></div>
       </div>
     </div>
-    <!-- end pure grid group -->
+    <div class="spacing"></div>
 
-    <div class="divider"></div>
+    <!-- Second Graph: Rank Idiom -->
+        <div class="pure-g">
+          <div class="pure-u-1-2">
+            <div class="description description-left">
+              <h1>Ranking of GDP Leading </h1>
+              <div class="para">
+              <p>
+                As GDP vary over years. The visualisation allows us to inspect that
+                <b>USA</b> has always been world <b>economic predator</b> (highest). Over time, a
+                significant observation is that <b>China</b> has surpassed United Kingdom, Germany, 
+                and Japan within <b>5 years period</b>. An interesting factor is Russia and India
+                has surpassed several countries in ranking. This is due to the diverse economic of
+                the individual's nations that <b>boosted</b> its GDP.
+              </p>
+            </div>
+            </div>
+          </div>
+          <div class="pure-u-1-2">
+            <div id="vis2" class="vis-container"></div>
+          </div>
+        </div>
+    <div class="spacing"></div>
 
-    <!-- pure grid group -->
+    <!-- Third Graph: UNKNOWN Idiom -->
+    <div class="pure-g">
+      <div class="pure-u-1-2">
+        <div class="description description-left">
+          <h1>Ranking of GDP Leading </h1>
+          <div class="para">
+          <p>
+            
+          </p>
+        </div>
+        </div>
+      </div>
+      <div class="pure-u-1-2">
+        <div id="vis2" class="vis-container"></div>
+      </div>
+    </div>
+<div class="spacing"></div>
+
+    <!-- Third Graph: KKE Idiom -->
     <div class="pure-g">
       <div class="pure-u-1-3">
         <div class="description description-left">
@@ -90,25 +125,10 @@
       <div class="pure-u-1-3" style="width: 31.5%;">
         <div id="vis3" class="vis-container" style="margin-left: 15px;"></div>
       </div>
-
     </div>
-    <!-- end pure grid group -->
 
-    <!-- pure grid group -->
-    <div class="pure-g">
-      <div class="pure-u-2-3">
-        <div id="vis2" class="vis-container"></div>
-      </div>
-      <div class="pure-u-1-3">
-        <div class="description description-right">
-          <h2>First and Second Columns Combined</h2>
-          <p>The first and second columns are combined. Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa sapien
-            faucibus et molestie ac feugiat sed. Egestas purus viverra accumsan in nisl.</p>
-        </div>
-      </div>
-    </div>
-    <!-- end pure grid group -->
+
+
 
     <div class="pure-g">
       <div class="pure-u-1-1 small-font">
@@ -122,10 +142,12 @@
   <script type="text/javascript">
     var specVis1 = "js/map_idiom.json";
     var specVis2 = "js/line_chart.json";
+    var specVis3 = "js/rank_idiom.json";
+    var specVis6 = "js/scatterplot_idiom.json";
 
     vegaEmbed('#vis1', specVis1, { "actions": false });
 
-    vegaEmbed('#vis2', specVis1, { "actions": false }).then(function (result) {
+    vegaEmbed('#vis2', specVis3, { "actions": false }).then(function (result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
 
@@ -133,7 +155,7 @@
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
 
-    vegaEmbed('#vis4', specVis2, { "actions": false }).then(function (result) {
+    vegaEmbed('#vis4', specVis3, { "actions": false }).then(function (result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
   </script>

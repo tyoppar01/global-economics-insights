@@ -1,23 +1,13 @@
-
-
-.title {
-    display: flex;
-
-    justify-content: center;
-    height: 150px;
-    margin-bottom: 40px;
-    align-items: center;
-
-    font-size: 40px;
-    font-weight: 500;
-    text-align: center;
-
-    color: white;
-    background-color: #000080;
+.page {
+  width: 1500px;
+  background-color: #E5E8E8;
+  margin: auto;
+  padding: 50px;
+  padding-top: 35px;
 }
 
 .spacing {
-  height: 50px; 
+  height: 100px; 
 }
 
 .divider {
@@ -41,36 +31,45 @@ body *{
   font-family: 'Open Sans', sans-serif;
 }
 
-h1 {
-  font-weight: 300;
+.title {
+  display: flex;
+
+  justify-content: center;
+  height: 150px;
+  margin-bottom: 40px;
+  align-items: center;
+
   font-size: 50px;
+  font-weight: 500;
   text-align: center;
+
   color: white;
   background-color: #000080;
-
-  height: 100px;
-
-  display: flex;
-  
-  align-items: center;
-  margin-bottom: 30px;
-  
 }
 
 body {
   background-color: lightgray;
 }
 
-.page {
-  width: 1500px;
-  background-color: #E5E8E8;
-  margin: auto;
-  padding: 50px;
-  padding-top: 35px;
-}
+
 
 .vis-container {
   width: 100%;
+}
+
+h1 {
+  font-weight: 50, bold;
+  font-size: 40px;
+
+  text-align: left;
+
+  height: 100px;
+  
+  align-items: center;
+  margin-bottom: 30px;
+
+
+  
 }
 
 .description h2
@@ -80,7 +79,6 @@ body {
   font-weight: 100;
   height: 100px;
   max-width: 40em;
-  text-align: center;
   text-align: justify;
   justify-content: center;
   align-items: center;
@@ -88,8 +86,6 @@ body {
   margin-bottom: 20px;
   margin-top: 0px;
 }
-
-
 
 .description-right {
   padding-left: 20px;
@@ -109,6 +105,8 @@ body {
   font-size: 14px;
 }
 
-para {
-  justify-content: center;
+.para {
+  font-size: 20px;
+  text-align: justify;
+  max-width: 35em;
 }

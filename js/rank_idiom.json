@@ -1,0 +1,133 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+        "url": "https://raw.githubusercontent.com/tyoppar01/hw_w10/master/data/gdp_s1.csv",
+        "format": {
+            "type": "csv"
+        }
+    },
+    "background": "#d3d3d3",
+    "width": "container",
+    "height": 300,
+    "transform": [
+        {
+            "filter": "datum.year >= 2000 && datum.year <= 2020"
+        },
+        {
+            "filter": "datum.country_name === 'China' || datum.country_name === 'United States of America' || datum.country_name === 'Japan' || datum.country_name === 'Russia' || datum.country_name === 'Australia' || datum.country_name === 'Singapore' || datum.country_name === 'Germany' || datum.country_name === 'India' || datum.country_name === 'Italy' || datum.country_name === 'United Kingdom'"
+        },
+        {
+            "calculate": "log(datum.value)",
+            "as": "log_value"
+        },
+        {
+            "sort": [
+                {
+                    "field": "log_value",
+                    "order": "descending"
+                },
+                {
+                    "field": "country_name",
+                    "order": "ascending"
+                }
+            ],
+            "window": [
+                {
+                    "op": "rank",
+                    "as": "rank"
+                }
+            ],
+            "groupby": [
+                "year"
+            ]
+        }
+    ],
+    "layer": [
+        {
+            "mark": {
+                "type": "line",
+                "orient": "vertical"
+            },
+            "encoding": {
+                "y": {
+                    "field": "rank",
+                    "type": "ordinal"
+                },
+                "x": {
+                    "field": "year",
+                    "type": "ordinal"
+                },
+                "color": {
+                    "title": "Country",
+                    "field": "country_name",
+                    "type": "nominal",
+                    "scale": {
+                        "domain": [
+                            "China",
+                            "United States of America",
+                            "Japan",
+                            "Russia",
+                            "Australia",
+                            "Singapore",
+                            "Germany",
+                            "India",
+                            "Italy",
+                            "United Kingdom"
+                        ],
+                        "range": [
+                            "#0000cd",
+                            "#00ced1",
+                            "#87cefa",
+                            "#0000A0",
+                            "#536878",
+                            "#536878",
+                            "#00ffff",
+                            "#3366FF",
+                            "#536878",
+                            "#536878"
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "mark": {
+                "type": "point",
+                "filled": true,
+                "shape": "circle",
+                "size": 20
+            },
+            "encoding": {
+                "y": {
+                    "field": "rank",
+                    "type": "ordinal"
+                },
+                "x": {
+                    "field": "year",
+                    "type": "ordinal"
+                },
+                "color": {
+                    "value": "grey"
+                },
+                "tooltip": [
+                    {
+                        "field": "country_name",
+                        "type": "nominal",
+                        "title": "Country Name"
+                    },
+                    {
+                        "field": "year",
+                        "type": "ordinal",
+                        "title": "Year"
+                    },
+                    {
+                        "field": "value",
+                        "type": "quantitative",
+                        "title": "GDP Value",
+                        "format": ".0f"
+                    }
+                ]
+            }
+        }
+    ]
+}

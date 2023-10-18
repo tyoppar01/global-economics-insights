@@ -1,0 +1,126 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "title": "World GDP in 2020",
+  "data": {
+    "url": "https://raw.githubusercontent.com/tyoppar01/hw_w10/master/data/gdp_s1.csv"
+  },
+  "params": [
+    {
+      "name": "Population_Above",
+      "value": 1000000000,
+      "bind": {
+        "input": "range",
+        "min": 1000000000,
+        "max": 30000000000000,
+        "step": 10000000,
+        "name": "Minimum GDP: "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "datum.year == 2020"
+    },
+    {
+      "field": "datum.value > Population_Above"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "value",
+      "type": "quantitative",
+      "title": "GDP Value",
+      "scale": {
+        "domain": [
+          0,
+          30000000000000
+        ]
+      },
+      "axis": {
+        "format": ".0e"
+      }
+    },
+    "y": {
+      "field": "value",
+      "type": "quantitative",
+      "title": "GDP Value",
+      "scale": {
+        "domain": [
+          0,
+          30000000000000
+        ]
+      },
+      "axis": {
+        "format": ".0e"
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": "circle",
+      "encoding": {
+        "size": {
+          "field": "value",
+          "type": "quantitative",
+          "title": "GDP",
+          "scale": {
+            "type": "threshold",
+            "domain": [
+              0,
+              1000000000,
+              10000000000,
+              100000000000,
+              1000000000000,
+              10000000000000,
+              50000000000000
+            ]
+          }
+        },
+        "color": {
+          "field": "value",
+          "type": "quantitative",
+          "title": "GDP value",
+          "scale": {
+            "domain": [
+              0,
+              1000000000,
+              10000000000,
+              100000000000,
+              1000000000000,
+              10000000000000,
+              50000000000000
+            ],
+            "range": [
+              "#D5F5E3",
+              "#66AA66",
+              "#66B2B2",
+              "#45A194",
+              "#33997E",
+              "#008000",
+              "#004C00"
+            ]
+          }
+        },
+        "opacity": {
+          "value": 0.8
+        },
+        "tooltip": [
+          {
+            "field": "country_name",
+            "type": "nominal"
+          },
+          {
+            "field": "country_code",
+            "type": "nominal"
+          },
+          {
+            "field": "value",
+            "type": "quantitative",
+            "format": ","
+          }
+        ]
+      }
+    }
+  ]
+}
