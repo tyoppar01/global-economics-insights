@@ -6,14 +6,28 @@
       "type": "csv"
     }
   },
+  "params": [
+    {
+        "name": "Year_selection",
+        "value": 2022,
+        "bind": {
+            "input": "range",
+            "min": 2000,
+            "max": 2022,
+            "step": 1,
+            "name": "Year: "
+        }
+    }
+],
   "width": "container",
   "height": 300,
+  "background": "#d3d3d3",
   "transform": [
     {
       "filter": "datum.year >= 2012 && datum.year <= 2022"
     },
     {
-      "filter": "datum.country_name === 'China' || datum.country_name === 'United States of America' || datum.country_name === 'Japan' || datum.country_name === 'Russia' || datum.country_name === 'Australia'"
+      "filter": "datum.country_name === 'Brunei' || datum.country_name === 'Myanmar' || datum.country_name === 'Indonesia' || datum.country_name === 'Laos' || datum.country_name === 'Malaysia' || datum.country_name === 'Singapore' || datum.country_name === 'Malaysia' || datum.country_name === 'Malaysia' "
     }
   ],
   "mark": "line",

@@ -1,0 +1,104 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+        "url": "https://raw.githubusercontent.com/tyoppar01/hw_w10/master/data/gdp_s1.csv",
+        "format": {
+            "type": "csv"
+        }
+    },
+    "params": [
+        {
+            "name": "Year_selection",
+            "value": 2022,
+            "bind": {
+                "input": "range",
+                "min": 2000,
+                "max": 2022,
+                "step": 1,
+                "name": "Year: "
+            }
+        }
+    ],
+    "width": "container",
+    "height": 300,
+    "background": "#d3d3d3",
+    "transform": [
+        {
+            "filter": "datum.country_name === 'Myanmar' || datum.country_name === 'Indonesia' || datum.country_name === 'Malaysia' || datum.country_name === 'Singapore' || datum.country_name === 'Vietnam' || datum.country_name === 'Thailand' || datum.country_name === 'Philippines'"
+        },
+        {
+            "filter": "datum.year == Year_selection"
+        },
+        {
+            "calculate": "datum.value/1000000",
+            "as": "gdp_per_million"
+        }
+    ],
+    "mark": "bar",
+    "encoding": {
+        "y": {
+            "field": "country_name",
+            "type": "ordinal",
+            "sort": "-x"
+        },
+        "x": {
+            "field": "gdp_per_million",
+            "title": "GDP Value (per million)",
+            "type": "quantitative",
+            "scale": {
+                "domain": [
+                    0,
+                    1400000
+                ]
+            }
+        },
+        "tooltip": [
+            {
+                "field": "country_name",
+                "type": "nominal",
+                "title": "Country Name"
+            },
+            {
+                "field": "country_code",
+                "type": "nominal",
+                "title": "Country Code"
+            },
+            {
+                "field": "year",
+                "type": "quantitative",
+                "title": "Year"
+            },
+            {
+                "field": "value",
+                "type": "quantitative",
+                "title": "GDP Value",
+                "format": ".0f"
+            }
+        ],
+        "color": {
+            "field": "country_name",
+            "type": "nominal",
+            "title": "Country",
+            "scale": {
+                "domain": [
+                    "Indonesia",
+                    "Singapore",
+                    "Vietnam",
+                    "Malaysia",
+                    "Myanmar",
+                    "Thailand",
+                    "Philippines"
+                ],
+                "range": [
+                    "#0000cd",
+                    "#00ced1",
+                    "#87cefa",
+                    "#0000A0",
+                    "#536878",
+                    "#00ffff",
+                    "#3366FF"
+                ]
+            }
+        }
+    }
+}
