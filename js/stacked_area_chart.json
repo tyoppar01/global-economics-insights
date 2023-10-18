@@ -1,0 +1,29 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": "container", "height": 300,
+    "data": {"url": "https://raw.githubusercontent.com/tyoppar01/fit3179_assignment_2/master/data/gdp_per_capita.csv"},
+    "mark": "area",
+    "encoding": {
+      "x": {
+        "timeUnit": "year", "field": "date",
+        "axis": {"format": "%Y"},
+        "title": "Year"
+      },
+      "y": {
+        "field": "value",
+        "type": "quantitative",
+        "title": "GDP Value",
+        "scale": {
+          "domain": [
+            0,
+            500
+          ]
+        }
+      },
+      "color": {
+        "field": "series",
+        "scale": {"scheme": "category20b"}
+      }
+    }
+  }
+  

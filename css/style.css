@@ -110,3 +110,9 @@ h1 {
   text-align: justify;
   max-width: 35em;
 }
+
+.para_middle {
+  font-size: 20px;
+  text-align: justify;
+  max-width: 60em;
+}
